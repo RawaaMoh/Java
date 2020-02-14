@@ -11,4 +11,13 @@ package librarymangment;
  */
 public class Writer {
     
+    String Name;
+    String Publisher;
+
+    public Writer(String Name, String Publisher) {
+        this.Name = Name;
+        this.Publisher = Publisher;
+    }
+    
+    
 }

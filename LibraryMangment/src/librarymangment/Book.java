@@ -11,4 +11,15 @@ package librarymangment;
  */
 public class Book {
     
+    String Name;
+    Writer writer;
+    boolean availability;
+
+    public Book(String Name, Writer writer, boolean taken) {
+        this.Name = Name;
+        this.writer = writer;
+    }
+    
+    
+    
 }

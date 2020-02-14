@@ -11,4 +11,15 @@ package librarymangment;
  */
 public class Costumer {
     
+    private String Adress;
+    private Book[] takenBooks = new Book[3];
+    int takenBooksNo;
+
+    public Costumer(String Adress, int takenBooksNo) {
+        this.Adress = Adress;
+        this.takenBooksNo = takenBooksNo;
+    }
+    
+    
+    
 }
