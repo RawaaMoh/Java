@@ -6,6 +6,8 @@
 package notecalculator;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -197,11 +199,12 @@ public class noteCalculator extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
 
-//        char ch = evt.getKeyChar();
-//        if (ch == 'r' ) {
-//            System.out.println("hello");
-//        }
-System.out.println("pressed"+evt.getKeyChar());
+        Random rn = new Random();
+        if (evt.getKeyCode() == KeyEvent.VK_E) {
+            txtMidterm.setText(Integer.toString(rn.nextInt()));
+            txtFinal.setText(Integer.toString(rn.nextInt()));
+            txtLab.setText(Integer.toString(rn.nextInt(51)));
+        }
 
     }//GEN-LAST:event_formKeyPressed
 
