@@ -11,11 +11,22 @@ package notecalculator;
  */
 public class student {
 
-    double midterNote, finalNote, labNote;
+    int midterNote, finalNote, labNote;
+
+    public student(int midterNote, int finalNote, int labNote) {
+        this.midterNote = midterNote;
+        this.finalNote = finalNote;
+        this.labNote = labNote;
+    }
+
+    student() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    }
 
     public double termNote() {
         double termNote = 0.0;
-        termNote = (((0.3 * midterNote) + (0.5 * finalNote) + (0.2 * labNote)) / 3);
+        termNote = ((0.3 * midterNote) + (0.5 * finalNote) + (0.2 * labNote));
         return termNote;
     }
 
@@ -33,7 +44,7 @@ public class student {
             letterNote = "CC";
         } else if (termNote() > 60 && termNote() < 64) {
             letterNote = "DC";
-        } else if (termNote() > 59 && termNote() < 0) {
+        } else if (termNote() < 59 && termNote() > 0) {
             letterNote = "FF";
         }
         return letterNote;

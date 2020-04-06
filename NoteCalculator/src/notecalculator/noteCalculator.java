@@ -5,6 +5,9 @@
  */
 package notecalculator;
 
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
 /**
  *
  * @author RawaaMoh
@@ -17,9 +20,14 @@ public class noteCalculator extends javax.swing.JFrame {
     student stu = new student();
 
     public noteCalculator() {
+
         initComponents();
+
     }
 
+    /**
+     * Creates new form noteCalculator
+     */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,6 +159,10 @@ public class noteCalculator extends javax.swing.JFrame {
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
         // TODO add your handling code here:
+        
+        stu.midterNote = Integer.valueOf(txtMidterm.getText().trim());
+        stu.finalNote = Integer.valueOf(txtFinal.getText().trim());
+        stu.labNote = Integer.valueOf(txtLab.getText().trim());
 
         txtTerm.setText(stu.termNote() + "");
         txtLetter.setText(stu.letterNote());
