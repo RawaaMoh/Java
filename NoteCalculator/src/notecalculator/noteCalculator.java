@@ -57,9 +57,12 @@ public class noteCalculator extends javax.swing.JFrame {
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                formComponentResized(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
             }
         });
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -194,11 +197,17 @@ public class noteCalculator extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
 
+//        char ch = evt.getKeyChar();
+//        if (ch == 'r' ) {
+//            System.out.println("hello");
+//        }
+System.out.println("pressed"+evt.getKeyChar());
+
     }//GEN-LAST:event_formKeyPressed
 
     private void btnCalculateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalculateMouseEntered
         // TODO add your handling code here:
-        btnCalculate.setForeground(Color.yellow);
+        btnCalculate.setForeground(Color.red);
     }//GEN-LAST:event_btnCalculateMouseEntered
 
     private void btnCalculateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalculateMouseExited
@@ -206,19 +215,24 @@ public class noteCalculator extends javax.swing.JFrame {
         btnCalculate.setForeground(Color.black);
     }//GEN-LAST:event_btnCalculateMouseExited
 
-    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
+        System.out.println("Closing..");
+    }//GEN-LAST:event_formWindowClosing
 
-        stu.midterNote = Integer.valueOf(txtMidterm.getText().trim());
-        stu.finalNote = Integer.valueOf(txtFinal.getText().trim());
-        stu.labNote = Integer.valueOf(txtLab.getText().trim());
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        // TODO add your handling code here:
+        txtMidterm.setText(Integer.parseInt(txtMidterm.getText().trim()) - 10 + "");
+        System.out.println("The program been resized");
 
-        txtTerm.setText(stu.termNote() + "");
-        txtLetter.setText(stu.letterNote());
+//        txtMidterm.setText(Integer.parseInt(txtMidterm.getText().trim())-10 + "");
+//        txtFinal.setText(Integer.parseInt(txtFinal.getText().trim())-10 + "");
+//        txtLab.setText(Integer.parseInt(txtLab.getText().trim())-10 + "");
+//
+//        txtTerm.setText(stu.termNote() + "");
+//        txtLetter.setText(stu.letterNote());
 
-        JOptionPane.showMessageDialog(this, "The program been resized");
-
-    }//GEN-LAST:event_formComponentResized
+    }//GEN-LAST:event_formWindowDeactivated
 
     /**
      * @param args the command line arguments
