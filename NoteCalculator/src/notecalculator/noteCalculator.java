@@ -92,6 +92,11 @@ public class noteCalculator extends javax.swing.JFrame {
                 btnCalculateActionPerformed(evt);
             }
         });
+        btnCalculate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnCalculateKeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Midterm note:");
 
@@ -105,15 +110,44 @@ public class noteCalculator extends javax.swing.JFrame {
 
         txtLetter.setEditable(false);
         txtLetter.setText(" ");
+        txtLetter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLetterKeyTyped(evt);
+            }
+        });
 
         txtTerm.setEditable(false);
         txtTerm.setText(" ");
+        txtTerm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTermKeyTyped(evt);
+            }
+        });
 
         txtLab.setText(" ");
+        txtLab.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLabKeyTyped(evt);
+            }
+        });
 
         txtFinal.setText(" ");
+        txtFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFinalKeyTyped(evt);
+            }
+        });
 
         txtMidterm.setText(" ");
+        txtMidterm.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtMidterm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMidtermKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMidtermKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,7 +225,7 @@ public class noteCalculator extends javax.swing.JFrame {
         stu.finalNote = Integer.valueOf(txtFinal.getText().trim());
         stu.labNote = Integer.valueOf(txtLab.getText().trim());
 
-        txtTerm.setText(stu.termNote() + "");
+        txtTerm.setText(String.format("%.2f", stu.termNote()));
         txtLetter.setText(stu.letterNote());
 
     }//GEN-LAST:event_btnCalculateActionPerformed
@@ -236,6 +270,57 @@ public class noteCalculator extends javax.swing.JFrame {
 //        txtLetter.setText(stu.letterNote());
 
     }//GEN-LAST:event_formWindowDeactivated
+
+    private void txtMidtermKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMidtermKeyPressed
+        // TODO add your handling code here:
+//        System.out.println(evt);
+//        if(evt.getKeyChar() == 'r' || evt.getKeyChar() == 'R'  ){
+//            System.out.println("R presssed");
+//        }
+    }//GEN-LAST:event_txtMidtermKeyPressed
+
+    private void txtMidtermKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMidtermKeyTyped
+        // TODO add your handling code here:
+        keyEventChecker(evt);
+    }//GEN-LAST:event_txtMidtermKeyTyped
+
+    private void txtFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFinalKeyTyped
+        // TODO add your handling code here:
+        keyEventChecker(evt);
+    }//GEN-LAST:event_txtFinalKeyTyped
+
+    private void txtLabKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLabKeyTyped
+        // TODO add your handling code here:
+        keyEventChecker(evt);
+    }//GEN-LAST:event_txtLabKeyTyped
+
+    private void txtTermKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTermKeyTyped
+        // TODO add your handling code here:
+        keyEventChecker(evt);
+    }//GEN-LAST:event_txtTermKeyTyped
+
+    private void txtLetterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLetterKeyTyped
+        // TODO add your handling code here:
+        keyEventChecker(evt);
+    }//GEN-LAST:event_txtLetterKeyTyped
+
+    private void btnCalculateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCalculateKeyTyped
+        // TODO add your handling code here:
+        keyEventChecker(evt);
+    }//GEN-LAST:event_btnCalculateKeyTyped
+
+    public void keyEventChecker(java.awt.event.KeyEvent evt) {
+        Random rn = new Random();
+        char typed = evt.getKeyChar();
+        if (!Character.isDigit(typed)) {
+            if (typed == 'r' || typed == 'R') {
+                txtMidterm.setText(Integer.toString(rn.nextInt(101)));
+                txtFinal.setText(Integer.toString(rn.nextInt(101)));
+                txtLab.setText(Integer.toString(rn.nextInt(101)));
+            }
+            evt.consume();
+        }
+    }
 
     /**
      * @param args the command line arguments
