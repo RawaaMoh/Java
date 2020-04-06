@@ -5,7 +5,9 @@
  */
 package notecalculator;
 
+import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -55,6 +57,16 @@ public class noteCalculator extends javax.swing.JFrame {
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Note Calculator");
@@ -62,6 +74,14 @@ public class noteCalculator extends javax.swing.JFrame {
         jLabel2.setText("Enter Midterm note, Final note and Lab note:");
 
         btnCalculate.setText("Calculate");
+        btnCalculate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCalculateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCalculateMouseExited(evt);
+            }
+        });
         btnCalculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCalculateActionPerformed(evt);
@@ -78,8 +98,10 @@ public class noteCalculator extends javax.swing.JFrame {
 
         jLabel7.setText("Letter note    :");
 
+        txtLetter.setEditable(false);
         txtLetter.setText(" ");
 
+        txtTerm.setEditable(false);
         txtTerm.setText(" ");
 
         txtLab.setText(" ");
@@ -159,7 +181,7 @@ public class noteCalculator extends javax.swing.JFrame {
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
         // TODO add your handling code here:
-        
+
         stu.midterNote = Integer.valueOf(txtMidterm.getText().trim());
         stu.finalNote = Integer.valueOf(txtFinal.getText().trim());
         stu.labNote = Integer.valueOf(txtLab.getText().trim());
@@ -168,6 +190,35 @@ public class noteCalculator extends javax.swing.JFrame {
         txtLetter.setText(stu.letterNote());
 
     }//GEN-LAST:event_btnCalculateActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_formKeyPressed
+
+    private void btnCalculateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalculateMouseEntered
+        // TODO add your handling code here:
+        btnCalculate.setForeground(Color.yellow);
+    }//GEN-LAST:event_btnCalculateMouseEntered
+
+    private void btnCalculateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalculateMouseExited
+        // TODO add your handling code here:
+        btnCalculate.setForeground(Color.black);
+    }//GEN-LAST:event_btnCalculateMouseExited
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        // TODO add your handling code here:
+
+        stu.midterNote = Integer.valueOf(txtMidterm.getText().trim());
+        stu.finalNote = Integer.valueOf(txtFinal.getText().trim());
+        stu.labNote = Integer.valueOf(txtLab.getText().trim());
+
+        txtTerm.setText(stu.termNote() + "");
+        txtLetter.setText(stu.letterNote());
+
+        JOptionPane.showMessageDialog(this, "The program been resized");
+
+    }//GEN-LAST:event_formComponentResized
 
     /**
      * @param args the command line arguments
