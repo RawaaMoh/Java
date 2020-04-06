@@ -200,7 +200,7 @@ public class noteCalculator extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         Random rn = new Random();
-        if (evt.getKeyCode() == KeyEvent.VK_E) {
+        if (evt.getKeyCode() == KeyEvent.VK_R) {
             txtMidterm.setText(Integer.toString(rn.nextInt()));
             txtFinal.setText(Integer.toString(rn.nextInt()));
             txtLab.setText(Integer.toString(rn.nextInt(51)));
