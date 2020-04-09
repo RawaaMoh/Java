@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package notecalculator;
+package noteCalculator;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -22,6 +22,7 @@ public class noteCalculator extends javax.swing.JFrame {
      * Creates new form noteCalculator
      */
     student stu = new student();
+    Random rn = new Random();
 
     public noteCalculator() {
 
@@ -63,8 +64,8 @@ public class noteCalculator extends javax.swing.JFrame {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
-            public void windowDeactivated(java.awt.event.WindowEvent evt) {
-                formWindowDeactivated(evt);
+            public void windowIconified(java.awt.event.WindowEvent evt) {
+                formWindowIconified(evt);
             }
         });
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -110,6 +111,11 @@ public class noteCalculator extends javax.swing.JFrame {
 
         txtLetter.setEditable(false);
         txtLetter.setText(" ");
+        txtLetter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLetterActionPerformed(evt);
+            }
+        });
         txtLetter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtLetterKeyTyped(evt);
@@ -233,11 +239,10 @@ public class noteCalculator extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
 
-        Random rn = new Random();
-        if (evt.getKeyCode() == KeyEvent.VK_R) {
-            txtMidterm.setText(Integer.toString(rn.nextInt()));
-            txtFinal.setText(Integer.toString(rn.nextInt()));
-            txtLab.setText(Integer.toString(rn.nextInt(51)));
+        if (evt .getKeyCode() == java.awt.event.KeyEvent.VK_E) {
+            txtMidterm.setText(Integer.toString(rn.nextInt(101)));
+            txtFinal.setText(Integer.toString(rn.nextInt(101)));
+            txtLab.setText(Integer.toString(rn.nextInt(101)));
         }
 
     }//GEN-LAST:event_formKeyPressed
@@ -256,20 +261,6 @@ public class noteCalculator extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println("Closing..");
     }//GEN-LAST:event_formWindowClosing
-
-    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
-        // TODO add your handling code here:
-        txtMidterm.setText(Integer.parseInt(txtMidterm.getText().trim()) - 10 + "");
-        System.out.println("The program been resized");
-
-//        txtMidterm.setText(Integer.parseInt(txtMidterm.getText().trim())-10 + "");
-//        txtFinal.setText(Integer.parseInt(txtFinal.getText().trim())-10 + "");
-//        txtLab.setText(Integer.parseInt(txtLab.getText().trim())-10 + "");
-//
-//        txtTerm.setText(stu.termNote() + "");
-//        txtLetter.setText(stu.letterNote());
-
-    }//GEN-LAST:event_formWindowDeactivated
 
     private void txtMidtermKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMidtermKeyPressed
         // TODO add your handling code here:
@@ -309,8 +300,25 @@ public class noteCalculator extends javax.swing.JFrame {
         keyEventChecker(evt);
     }//GEN-LAST:event_btnCalculateKeyTyped
 
+    private void formWindowIconified(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowIconified
+        // TODO add your handling code here:
+        txtMidterm.setText(Integer.parseInt(txtMidterm.getText().trim()) - 10 + "");
+        System.out.println("The program been resized");
+
+//        txtMidterm.setText(Integer.parseInt(txtMidterm.getText().trim())-10 + "");
+//        txtFinal.setText(Integer.parseInt(txtFinal.getText().trim())-10 + "");
+//        txtLab.setText(Integer.parseInt(txtLab.getText().trim())-10 + "");
+//
+//        txtTerm.setText(stu.termNote() + "");
+//        txtLetter.setText(stu.letterNote());
+    }//GEN-LAST:event_formWindowIconified
+
+    private void txtLetterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLetterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLetterActionPerformed
+
     public void keyEventChecker(java.awt.event.KeyEvent evt) {
-        Random rn = new Random();
+
         char typed = evt.getKeyChar();
         if (!Character.isDigit(typed)) {
             if (typed == 'r' || typed == 'R') {
@@ -319,6 +327,11 @@ public class noteCalculator extends javax.swing.JFrame {
                 txtLab.setText(Integer.toString(rn.nextInt(101)));
             }
             evt.consume();
+        }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_E) {
+            txtMidterm.setText(Integer.toString(rn.nextInt(101)));
+            txtFinal.setText(Integer.toString(rn.nextInt(101)));
+            txtLab.setText(Integer.toString(rn.nextInt(101)));
         }
     }
 

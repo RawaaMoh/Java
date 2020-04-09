@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package notecalculator;
+package noteCalculator;
 
 /**
  *
@@ -21,7 +21,31 @@ public class student {
 
     student() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
+
+    }
+
+    public int getMidterNote() {
+        return midterNote;
+    }
+
+    public void setMidterNote(int midterNote) {
+        this.midterNote = midterNote;
+    }
+
+    public int getFinalNote() {
+        return finalNote;
+    }
+
+    public void setFinalNote(int finalNote) {
+        this.finalNote = finalNote;
+    }
+
+    public int getLabNote() {
+        return labNote;
+    }
+
+    public void setLabNote(int labNote) {
+        this.labNote = labNote;
     }
 
     public double termNote() {
@@ -32,19 +56,20 @@ public class student {
 
     public String letterNote() {
         String letterNote = null;
-        if (termNote() > 90 && termNote() < 100) {
+        double termNote = termNote();
+        if (termNote > 90 && termNote < 100) {
             letterNote = "AA";
-        } else if (termNote() > 85 && termNote() < 89) {
+        } else if (termNote > 85 && termNote < 89) {
             letterNote = "BA";
-        } else if (termNote() > 80 && termNote() < 84) {
+        } else if (termNote > 80 && termNote < 84) {
             letterNote = "BB";
-        } else if (termNote() > 75 && termNote() < 79) {
+        } else if (termNote > 75 && termNote < 79) {
             letterNote = "CB";
-        } else if (termNote() > 65 && termNote() < 74) {
+        } else if (termNote > 65 && termNote < 74) {
             letterNote = "CC";
-        } else if (termNote() > 60 && termNote() < 64) {
+        } else if (termNote > 60 && termNote < 64) {
             letterNote = "DC";
-        } else if (termNote() < 59 && termNote() > 0) {
+        } else if (termNote < 59 && termNote > 0) {
             letterNote = "FF";
         }
         return letterNote;
